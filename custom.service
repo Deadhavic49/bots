@@ -1,0 +1,13 @@
+[Unit]
+Description=Custom Service
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/bots/custom
+ExecStart=/home/pi/.nvm/versions/node/v12.20.0/bin/npm start
+Restart=on-failure
+User=pi
+Environment=PORT=8000
+
+[Install]
+WantedBy=multi-user.target

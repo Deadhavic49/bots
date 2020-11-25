@@ -4,6 +4,9 @@
  "description": "My First Discord Bot",
  "main": "bot.js",
  "author": "deadhavic",
+ "scripts": {
+  "start": "nodemon bot.js"
+ },
  "dependencies": {
   "cheerio": "^1.0.0-rc.3",
   "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",

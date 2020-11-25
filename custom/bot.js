@@ -1,11 +1,7 @@
-require("dotenv").config();
-const fs = require("fs");
-const request = require("request");
-const cheerio = require("cheerio");
-const fetch = require("node-fetch");
-var Discord = require('discord.js');
+var Discord = require('discord.io');
 var logger = require('winston');
-var auth = require('./auth.json');
+require("dotenv").config({path: '../.env'});
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
@@ -14,21 +10,13 @@ logger.add(new logger.transports.Console, {
 logger.level = 'debug';
 // Initialize Discord Bot
 var bot = new Discord.Client({
-   token: auth.token,
+   token: process.env.CUSTOM_TOKEN,
    autorun: true
 });
-let state = []
-bot.commands = new Discord.Collection();
-const commandFiles = fs
-  .readdirSync("./commands")
-  .filter((file) => file.endsWith(".js"));
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
 
-  bot.commands.set(command.name, command);
-}
+let state = []
 bot.on('ready', function (evt) {
-    logger.info('Connected');
+    logger.info('Connected!');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
@@ -231,15 +219,4 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
-        const command =
-    bot.commands.get(message) ||
-    bot.commands.find(
-      (cmd) => cmd.aliases && cmd.aliases.includes(commandName)
-    );
-        try {
-            command.execute(message, args);
-          } catch (error) {
-            console.error(error);
-            message.reply("There was an error executing that command!");
-          }
     }});

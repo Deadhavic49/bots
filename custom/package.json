@@ -1,0 +1,17 @@
+{
+ "name": "sirjim-custom",
+ "version": "1.0.0",
+ "description": "My First Discord Bot",
+ "main": "bot.js",
+ "author": "deadhavic",
+ "dependencies": {
+  "cheerio": "^1.0.0-rc.3",
+  "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+  "discord.js": "^12.4.1",
+  "dotenv": "^8.2.0",
+  "node-fetch": "^2.6.1",
+  "nodemon": "^2.0.6",
+  "request": "^2.88.2",
+  "winston": "^3.3.3"
+ }
+}

@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 WorkingDirectory=/home/pi/bots/bot2
-ExecStart=/home/pi/.nvm/versions/node/v12.20.0/bin/npm start
+ExecStart=/home/pi/.nvm/versions/node/v12.20.0/bin/node bot.js
 Restart=on-failure
 User=pi
 Environment=PORT=8000

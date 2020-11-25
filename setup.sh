@@ -20,13 +20,14 @@ cd ../bot2
 npm install
 cd ..
 
-# install and configure pm2 to run apps on startup
-sudo npm install -g pm2
-pm2 start bot2/bot.js
-pm2 start custom/bot.js
-pm2 startup systemd
-# will generate a command to run, ie:
-sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u pi --hp /home/pi
-pm2 save
+sudo cp bot2.service /etc/systemd/system
+sudo systemctl enable bot2.service
+sudo systemctl start bot2.service
+sudo cp custom.service /etc/systemd/system
+sudo systemctl enable custom.service
+sudo systemctl start custom.service
+# logs:
+journalctl -u bot2.service
+journalctl -u custom.service
 
 sudo poweroff

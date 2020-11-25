@@ -1,26 +1,36 @@
-var Discord = require('discord.io');
-var logger = require('winston');
 require("dotenv").config({path: '../.env'});
+const Discord = require('discord.io');
+const logger = require('winston');
+const { sleep } = require('./functions/utils.js')
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
     colorize: true
 });
 logger.level = 'debug';
+
 // Initialize Discord Bot
-var bot = new Discord.Client({
+const bot = new Discord.Client({
    token: process.env.BOT2_TOKEN,
    autorun: true
 });
+
+// initalize state
 let state = []
+
+// start bot and listen
 bot.on('ready', function (evt) {
     logger.info('Connected!');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
-bot.on('message', function (user, userID, channelID, message, evt) {
+
+bot.on('message', (user, userID, channelID, message, evt) => {
+
     if (state.includes(userID)) { 
         state = state.filter(item => item !== userID)
+
         if (message == ["im good"]) {
             bot.sendMessage({
                 to: channelID,
@@ -31,15 +41,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 to: channelID,
                 message: "ok" 
             });
-        }}
+        }
+    }
+
+    if (message === `=startloop`) {
+        sleep(500) 
+        bot.sendMessage({
+            to: channelID,
+            message: `=startloop`
+        });
+    }
+
     if (message.substring(0, 1) == '=') {
-        logger.info("message: ")
-        logger.info(message)
-        var args = message.substring(1).split(' ');
-        var cmd = args[0];
+        let args = message.substring(1).split(' ');
+        const cmd = args[0];
         args = args.splice(1);
+
         switch(cmd) {
-            // !ping
             case 'ping':
                 bot.sendMessage({
                     to: channelID,
@@ -91,17 +109,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
             break;
         }
-        function sleep(delay) {
-            var start = new Date().getTime();
-            while (new Date().getTime() < start + delay);
-          }
-        if (message === `=startloop`) {
-            sleep(500) 
-            bot.sendMessage({
-                to: channelID,
-                message: `=startloop`
-        
-            });
-        }
+    }
 
-    }});
+});

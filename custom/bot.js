@@ -111,14 +111,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 to: channelID,
                 message: `
 \`\`\` 
-   | =ping, | =server, |=user info,  |
-   | =HRU       |=random   | =getfit |
-   | =heel| =jj| =getfitvid| =awman  |
-   | =sum -> ex.=sum 1 + 1,| =hello, |
-   | =difference,ex.->,=difference 1 - 1|
-   | =product ex. -> =product 10 * 10|
-   | =quotient ex.-> quotient 10 / 10|
-   |=pi|=the fall|=dream war|
+   | =ping, | =server, | =user info,  |
+   |  =HRU       |=random   | =getfit |
+   | =heel| =jj | =getfitvid| =awman  |
+   | =sum -> ex.=sum 1 + 1, | =hello, |
+   | =difference ex.-> =difference 1 - 1|
+   | =product ex. -> =product 10 * 10 |
+   | =quotient ex.-> quotient 10 / 10 |
+   | =pi | =the fall | =dream war |
 \`\`\`
       `  
             });

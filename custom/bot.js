@@ -118,7 +118,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
    | =difference,ex.->,=difference 1 - 1|
    | =product ex. -> =product 10 * 10|
    | =quotient ex.-> quotient 10 / 10|
-   |=pi|
+   |=pi|=the fall|=dream war|
 \`\`\`
       `  
             });
@@ -216,6 +216,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             bot.sendMessage({
                 to: channelID,
                 message: `=startloop`
+        
+            });
+        }
+        if (message === `=the fall`) {
+            sleep(500)
+            bot.sendMessage({
+                to: channelID,
+                message: `https://www.youtube.com/watch?v=mbYL474rAdg&feature=emb_logo`
+        
+            });
+        }
+        if (message === `=dream war`) {
+            sleep(500)
+            bot.sendMessage({
+                to: channelID,
+                message: `https://www.youtube.com/watch?v=ISVwUsVm3CA`
         
             });
         }

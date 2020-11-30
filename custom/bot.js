@@ -35,7 +35,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             });
         }}
         if (godState.includes(userID)) { 
-            godState = state.filter(item => item !== userID)
+            godState = godState.filter(item => item !== userID)
             if (message == ["1"]) {
                 bot.sendMessage({
                     to: channelID,

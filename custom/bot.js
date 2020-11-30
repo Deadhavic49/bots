@@ -235,5 +235,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
+        if (message === `=blood god`) {
+            sleep(500)
+            bot.sendMessage({
+                to: channelID,
+                message: `to sacrefice you young please press 1`
         
+            });
+        }
     }});

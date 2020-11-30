@@ -13,7 +13,7 @@ var bot = new Discord.Client({
    token: process.env.CUSTOM_TOKEN,
    autorun: true
 });
-
+let godState = []
 let state = []
 bot.on('ready', function (evt) {
     logger.info('Connected!');
@@ -34,6 +34,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 message: "ok" 
             });
         }}
+        if (godState.includes(userID)) { 
+            godState = state.filter(item => item !== userID)
+            if (message == ["1"]) {
+                bot.sendMessage({
+                    to: channelID,
+                    message: `thank you for choosing blood god industries please come again sometime` 
+                });
+            } else {
+                bot.sendMessage({
+                    to: channelID,
+                    message: `sorry but your transaction has been declined try again`
+                });
+            }}
     if (message.substring(0, 1) == '=') {
         logger.info("message: ")
         logger.info(message)
@@ -237,9 +250,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
         if (message === `=blood god`) {
             sleep(500)
+            godState.push(userID)
             bot.sendMessage({
                 to: channelID,
-                message: `to sacrefice you young please press 1`
+                message: `to sacrefice your young please press 1`
         
             });
         }

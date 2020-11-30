@@ -132,6 +132,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
    | =product ex. -> =product 10 * 10 |
    | =quotient ex.-> quotient 10 / 10 |
    | =pi | =the fall | =dream war |
+   | =blood god |
 \`\`\`
       `  
             });

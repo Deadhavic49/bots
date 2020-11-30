@@ -133,6 +133,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
    | =quotient ex.-> quotient 10 / 10 |
    | =pi | =the fall | =dream war |
    | =blood god | =we got em |
+   | =croissant  |
 \`\`\`
       `  
             });
@@ -264,6 +265,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             bot.sendMessage({
                 to: channelID,
                 message: `https://www.youtube.com/watch?v=-15VC4Yxzys`
+        
+            });
+        }
+        if (message === `=croissant`) {
+            sleep(500)
+            godState.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `https://www.youtube.com/watch?v=a23f-0Phrfo&feature=emb_logo`
         
             });
         }

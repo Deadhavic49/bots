@@ -250,18 +250,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
-        if (message === `=blood god`) {
-            sleep(500)
-            godState.push(userID)
-            bot.sendMessage({
-                to: channelID,
-                message: `to sacrefice your young please press 1`
-        
-            });
-        }
         if (message === `=we got em`) {
             sleep(500)
-            godState.push(userID)
+            state.push(userID)
             bot.sendMessage({
                 to: channelID,
                 message: `https://www.youtube.com/watch?v=-15VC4Yxzys`
@@ -270,7 +261,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         }
         if (message === `=croissant`) {
             sleep(500)
-            godState.push(userID)
+            state.push(userID)
             bot.sendMessage({
                 to: channelID,
                 message: `https://www.youtube.com/watch?v=a23f-0Phrfo&feature=emb_logo`

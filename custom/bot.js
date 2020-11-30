@@ -258,4 +258,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
+        if (message === `=we got em`) {
+            sleep(500)
+            godState.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `https://www.youtube.com/watch?v=-15VC4Yxzys`
+        
+            });
+        }
     }});

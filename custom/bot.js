@@ -14,6 +14,7 @@ var bot = new Discord.Client({
    autorun: true
 });
 let godState = []
+let pogState = []
 let state = []
 bot.on('ready', function (evt) {
     logger.info('Connected!');
@@ -47,6 +48,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: `sorry but your transaction has been declined try again`
                 });
             }}
+            if (pogState.includes(userID)) { 
+                pogState = pogState.filter(item => item !== userID)
+                if (message == ["yes"]) {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: `you are correct, awesome` 
+                    });
+                } else {
+                    bot.sendMessage({
+                        to: channelID,
+                        message: `sorry but you are very wrong`
+                    });
+                }}
     if (message.substring(0, 1) == '=') {
         logger.info("message: ")
         logger.info(message)
@@ -132,8 +146,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
    | =product ex. -> =product 10 * 10 |
    | =quotient ex.-> quotient 10 / 10 |
    | =pi | =the fall | =dream war |
-   | =blood god | =we got em |
-   | =croissant  |
+   | =blood god | =we got em | =quiz  |
+   | =croissant  |  =throw  | =catch  |
 \`\`\`
       `  
             });
@@ -235,7 +249,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             });
         }
         if (message === `=the fall`) {
-            sleep(500)
             bot.sendMessage({
                 to: channelID,
                 message: `https://www.youtube.com/watch?v=mbYL474rAdg&feature=emb_logo`
@@ -243,7 +256,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             });
         }
         if (message === `=dream war`) {
-            sleep(500)
             bot.sendMessage({
                 to: channelID,
                 message: `https://www.youtube.com/watch?v=ISVwUsVm3CA`
@@ -251,7 +263,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             });
         }
         if (message === `=we got em`) {
-            sleep(500)
             state.push(userID)
             bot.sendMessage({
                 to: channelID,
@@ -260,7 +271,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             });
         }
         if (message === `=croissant`) {
-            sleep(500)
             state.push(userID)
             bot.sendMessage({
                 to: channelID,
@@ -268,12 +278,35 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
+        if (message === `=catch`) {
+            state.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `( っ'-'):basketball:`
+        
+            });
+        }
+        if (message === `=throw`) {
+            state.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `( っ'-')╮ =͟͟͞:basketball:`
+        
+            });
+        }
         if (message === `=blood god`) {
-            sleep(500)
             godState.push(userID)
             bot.sendMessage({
                 to: channelID,
                 message: `to sacrefice your young please press 1`
+        
+            });
+        }
+        if (message === `=quiz`) {
+            pogState.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `is deadhavic custom the best bot ever?`
         
             });
         }

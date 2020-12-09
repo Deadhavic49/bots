@@ -294,6 +294,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
         
             });
         }
+        if (message === `.`) {
+            state.push(userID)
+            bot.sendMessage({
+                to: channelID,
+                message: `rpg start`
+        
+            });
+        }
         if (message === `=blood god`) {
             godState.push(userID)
             bot.sendMessage({
